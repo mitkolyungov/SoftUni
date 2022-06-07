@@ -3,6 +3,6 @@ function sequence(input){
     let num = 1;
     while(num<=number){
         console.log(num);
-        num = 2*num + 1;
+         num = 2*num + 1;
     }
 }
