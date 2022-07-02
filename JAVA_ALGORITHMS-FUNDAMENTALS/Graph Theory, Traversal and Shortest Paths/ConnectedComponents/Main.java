@@ -53,8 +53,4 @@ public class Main {
             components.get (components.size () - 1).offer (node);
         }
     }
-
-    public static Collection<String> topSort(Map<String, List<String>> graph) {
-        return null;
-    }
 }
