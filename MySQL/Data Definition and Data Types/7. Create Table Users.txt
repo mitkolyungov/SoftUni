@@ -1,0 +1,16 @@
+CREATE TABLE `users`(
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+    `username` VARCHAR(30),
+    `passowrd` VARCHAR(26),
+    `profile picture` BLOB,
+    `last_login_time` DATETIME,
+    `is_deleted` BOOLEAN
+);
+
+INSERT INTO `users`
+VALUES
+(1,'MITKO', 12345,NULL,05/33,FALSE),
+(2,'MITKO', 12345,NULL,05/33,FALSE),
+(3,'MITKO', 12345,NULL,05/33,FALSE),
+(4,'MITKO', 12345,NULL,05/33,FALSE),
+(5,'MITKO', 12345,NULL,05/33,FALSE);

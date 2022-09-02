@@ -1,0 +1,74 @@
+CREATE DATABASE `movies`;
+USE `movies`;
+
+CREATE TABLE `directors`(
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+    `director_name` VARCHAR(30) NOT NULL,
+    `notes` TEXT
+);
+
+INSERT INTO `directors`
+VALUES
+(1,'Mitko', NULL),
+(2,'Mitko', NULL),
+(3,'Mitko', NULL),
+(4,'Mitko', NULL),
+(5,'Mitko', NULL);
+
+UPDATE `directors` SET `director_name` = 'Pesho' WHERE `id` = 3;
+UPDATE `directors` SET `director_name` = 'Petko' WHERE `id` = 4;
+UPDATE `directors` SET `director_name` = 'Plamen' WHERE `id` = 5;
+
+CREATE TABLE `genres`(
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+    `genre_name` VARCHAR(30) NOT NULL,
+    `notes` TEXT
+);
+
+INSERT INTO `genres`
+VALUES
+(1,'Drama', NULL),
+(2,'Horror', NULL),
+(3,'Action', NULL),
+(4,'Drama', NULL),
+(5,'Action', NULL);
+
+CREATE TABLE `categories`(
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+    `category_name` VARCHAR(30) NOT NULL,
+    `notes` TEXT
+);
+
+INSERT INTO `categories`
+VALUES
+(1,'Kids', NULL),
+(2,'Babies', NULL),
+(3,'Under 18', NULL),
+(4,'18+', NULL),
+(5,'Babies', NULL);
+
+CREATE TABLE `movies`(
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+    `title` VARCHAR(30) NOT NULL,
+	`director_id` INT NOT NULL,
+    CONSTRAINT fk_movies_directors
+    FOREIGN KEY (`director_id`) REFERENCES `directors`(`id`),
+    `copyright_year` INT NOT NULL,
+    `length` DOUBLE(3,2) NOT NULL,
+    `genre_id` INT NOT NULL,
+    CONSTRAINT fk_movies_genres
+    FOREIGN KEY (`genre_id`) REFERENCES `genres`(`id`),
+	`category_id` INT NOT NULL,
+    CONSTRAINT fk_movies_categories
+	FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`),
+    `rating` DOUBLE(2,1),
+    `notes` TEXT
+);
+
+INSERT INTO `movies`
+VALUES
+(1,'GoT',3,2011,2.30,4,4,5.4,NULL),
+(2,'GoT',1,2011,5.30,2,5,5.4,NULL),
+(3,'GoT',2,2011,4.30,3,3,5.4,NULL),
+(4,'GoT',4,2011,3.30,1,2,5.4,NULL),
+(5,'GoT',5,2011,1.30,5,1,5.4,NULL);
